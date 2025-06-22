@@ -1,22 +1,19 @@
-// commands/menu/botmenu.js
+module.exports = {
+  name: "botmenu",
+  alias: ["sysmenu", "devmenu"],
+  category: "Main",
+  desc: "Show all bot system commands",
+  use: "$botmenu",
+  async execute({ reply }) {
+    reply(`🤖 *BOT SYSTEM MENU*
 
-module.exports = async (sock, message, args) => {
-  const botInfo = `
-╔══🤖〘 *SAVAGE-XMD BOT INFO* 〙🤖══
-║
-╠➤ $ping — Check bot speed
-╠➤ $owner — Contact the developer
-╠➤ $runtime — How long bot is active
-╠➤ $support — Get support group
-╠➤ $prefix — Current bot prefix
-╠➤ $report <text> — Report a bug
-║
-╠🔧 *Bot Name:* SAVAGE-XMD
-╠🧠 *Creator:* @SAVAGE_B.O.Y
-╠🌐 *Session:* Paired (Auto)
-║
-╚═════〘 STAY CONNECTED ⚡ 〙═════╝
-`;
+🛰️ $ping – Check bot response speed
+🔁 $restart – Restart the bot
+🔐 $mode <public|private> – Change bot access mode
+⚙️ $setprefix <symbol> – Set bot command prefix
+📊 $stats – View bot uptime and memory info
+👤 $owner – Show developer contact
 
-  await sock.sendMessage(message.key.remoteJid, { text: botInfo }, { quoted: message });
+Use *$menu* to explore all other command menus.`);
+  }
 };
