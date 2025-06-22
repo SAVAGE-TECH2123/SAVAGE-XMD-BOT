@@ -1,20 +1,20 @@
-// commands/menu/extramenu.js
+module.exports = {
+  name: "extramenu",
+  alias: ["extras", "toolsmenu"],
+  category: "Main",
+  desc: "Show all extra utility features",
+  use: "$extramenu",
+  async execute({ reply }) {
+    reply(`🧰 *EXTRA TOOLS MENU*
 
-module.exports = async (sock, message, args) => {
-  const extraMenu = `
-╔══🧰〘 *SAVAGE-XMD EXTRAS MENU* 〙🧰══
-║
-╠➤ $ping — Check bot response time
-╠➤ $owner — Get owner's contact
-╠➤ $runtime — Bot online duration
-╠➤ $support — Support group or link
-╠➤ $report <issue> — Report bugs or errors
-╠➤ $invite <group link> — Request bot to join group
-╠➤ $botname — Show current bot name
-╠➤ $donate — Support development 💰
-║
-╚═════〘 POWERED BY SAVAGE B.O.Y 🔧 〙═════╝
-`;
+🕒 $time – Get current time
+📅 $date – Get today's date
+🔗 $short <link> – Shorten long URL
+🖼️ $sticker – Convert image/video to sticker
+🧃 $toimg – Convert sticker to image
+🎥 $tovideo – Convert sticker to video
 
-  await sock.sendMessage(message.key.remoteJid, { text: extraMenu }, { quoted: message });
+These are bonus tools built into SAVAGE-XMD.
+Use *$menu* to view more categories.`);
+  }
 };
