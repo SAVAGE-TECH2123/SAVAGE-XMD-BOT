@@ -1,18 +1,28 @@
-// commands/menu/downloadmenu.js
+module.exports = {
+  name: "downloadmenu",
+  alias: ["downmenu", "dlmenu"],
+  category: "Main",
+  desc: "Show all downloader features",
+  use: "$downloadmenu",
+  async execute({ reply }) {
+    reply(`📥 *DOWNLOAD MENU* 📥
 
-module.exports = async (sock, message, args) => {
-  const downloadMenu = `
-╔══📥〘 *SAVAGE-XMD DOWNLOAD MENU* 〙📥══
-║
-╠➤ $ytmp3 <link> — YouTube to MP3
-╠➤ $ytmp4 <link> — YouTube to MP4
-╠➤ $tiktok <link> — TikTok downloader
-╠➤ $play <song name> — Play music
-╠➤ $apk <app name> — Download APK
-╠➤ $img <query> — Image downloader
-║
-╚═════〘 DOWNLOAD FREELY 🎶 〙═════╝
-`;
+🎵 *YouTube Music*
+• $ytmp3 <yt link>
+• $mp3 <song name>
 
-  await sock.sendMessage(message.key.remoteJid, { text: downloadMenu }, { quoted: message });
+🎬 *YouTube Video*
+• $ytmp4 <yt link>
+• $video <title>
+
+🎶 *Social Media*
+• $tiktok <tiktok url>
+• $ig <instagram url>
+
+📦 *File Downloaders*
+• $mediafire <link>
+• $apk <app name>
+
+`);
+  }
 };
