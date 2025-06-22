@@ -1,17 +1,33 @@
-// commands/menu/godmenu.js
-
-module.exports = async (sock, message, args) => {
-  const godMenu = `
-╔══✝️〘 *SAVAGE-XMD GOD IS FIRST MENU* 〙✝️══
-║
-╠➤ $verse — Get a random Bible verse
-╠➤ $quran — Get a random Quran verse
-╠➤ $prayforme — Let the bot pray for you 🤲
-╠➤ $wisdom — Daily motivation & wisdom
-╠➤ $godquotes — Uplifting spiritual quotes
-║
-╚═════〘 STAY BLESSED 🙌 〙═════╝
-`;
-
-  await sock.sendMessage(message.key.remoteJid, { text: godMenu }, { quoted: message });
+module.exports = {
+  name: "godmenu",
+  alias: ["god", "religion"],
+  category: "Main",
+  desc: "Displays God-first spiritual commands",
+  use: "$godmenu",
+  async execute({ reply }) {
+    reply(`
+╭───〔 🙏 *GOD IS FIRST* MENU 〕───⬣
+│
+│ ✝️ *Christian Commands*
+│ ├─ ❏ $verse <topic>
+│ ├─ ❏ $bible <John 3:16>
+│ ├─ ❏ $psalm <number>
+│ ├─ ❏ $jesus
+│ └─ ❏ $gospel
+│
+│ ☪️ *Islamic Commands*
+│ ├─ ❏ $quran <2:255>
+│ ├─ ❏ $allah
+│ ├─ ❏ $hadithi
+│ └─ ❏ $duaa
+│
+│ 🌟 *Spiritual & Uplifting*
+│ ├─ ❏ $pray
+│ ├─ ❏ $devotion
+│ ├─ ❏ $blessings
+│ └─ ❏ $god
+│
+╰──────────────⬣
+`);
+  },
 };
