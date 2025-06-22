@@ -1,19 +1,18 @@
-// commands/menu/funmenu.js
-
-module.exports = async (sock, message, args) => {
-  const funMenu = `
-╔══🎉〘 *SAVAGE-XMD FUN MENU* 〙🎉══
-║
-╠➤ $joke — Random joke
-╠➤ $meme — Fresh meme
-╠➤ $truth — Truth game
-╠➤ $dare — Dare game
-╠➤ $rate @user — Rate someone
-╠➤ $gayrate @user — Funny gay %
-╠➤ $ship @user1 @user2 — Love match
-║
-╚═════〘 STAY SAVAGE 😈 〙═════╝
-`;
-
-  await sock.sendMessage(message.key.remoteJid, { text: funMenu }, { quoted: message });
+module.exports = {
+  name: "funmenu",
+  alias: ["fun", "funny"],
+  category: "Main",
+  desc: "Shows all fun-related commands",
+  use: "$funmenu",
+  async execute({ reply }) {
+    reply(`╭━━━🎉 *FUN MENU* 🎉━━⬣
+┃
+┃🤣 $joke — Get a random joke
+┃🤔 $truth — Random truth question
+┃🔥 $dare — Random dare challenge
+┃🖼️ $meme — Random meme from Reddit
+┃🗣️ $say <text> — Bot repeats your text
+┃
+╰━━━━━━━━━━━━━━━━━━━━⬣`);
+  }
 };
