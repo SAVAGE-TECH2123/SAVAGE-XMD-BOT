@@ -2,11 +2,12 @@ const { default: makeWASocket, useSingleFileAuthState } = require('@whiskeysocke
 const pino = require('pino');
 const fs = require('fs');
 const path = require('path');
-const axios = require('axios');
 const messageHandler = require('./handlers/messageHandler');
+require('dotenv').config(); // Load .env variables
 
+// Load session ID from .env or default fallback
 const SESSION_ID = process.env.SESSION_ID || 'default_session_id';
-const SESSION_FILE_PATH = path.join(__dirname, `${SESSION_ID}.json`);
+const SESSION_FILE_PATH = path.join(__dirname, 'saved', `${SESSION_ID}.json`);
 const { state, saveState } = useSingleFileAuthState(SESSION_FILE_PATH);
 
 async function startBot() {
@@ -14,10 +15,10 @@ async function startBot() {
     logger: pino({ level: 'silent' }),
     auth: state,
     printQRInTerminal: false,
-    browser: ['SAVAGE-XMD', 'Chrome', '1.0.0']
+    browser: ['SAVAGE-XMD', 'Chrome', '1.0.0'],
   });
 
-  // Auto-save session on updates
+  // Save session on update
   sock.ev.on('creds.update', saveState);
 
   // Handle incoming messages
@@ -29,7 +30,7 @@ async function startBot() {
     }
   });
 
-  console.log('✅ SAVAGE-XMD is up and running using session ID:', SESSION_ID);
+  console.log(`✅ SAVAGE-XMD is up and running using session ID: ${SESSION_ID}`);
 }
 
 startBot();
