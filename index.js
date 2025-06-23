@@ -1,7 +1,7 @@
 // index.js
 
 // Import the connect function from connect.js
-const connectToWhatsApp = require('./connect');
+const connectToWhatsApp = require('./core/connect');
 
 // Start the WhatsApp bot
 connectToWhatsApp()
