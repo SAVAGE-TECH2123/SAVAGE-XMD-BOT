@@ -18,8 +18,21 @@ module.exports = async (sock, msg) => {
     const args = body.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
-    // Look through command folders
-    const commandDirs = ['ai', 'group', 'download', 'fun', 'menu', 'news'];
+    // Look through all command folders
+    const commandDirs = [
+      'ai',
+      'group',
+      'download',
+      'fun',
+      'games',
+      'god',
+      'news',
+      'general',
+      'extramenu',
+      'conservation',
+      'mainmenu',
+      'botmenu'
+    ];
 
     for (const dir of commandDirs) {
       const commandPath = path.join(__dirname, '..', 'commands', dir, `${command}.js`);
