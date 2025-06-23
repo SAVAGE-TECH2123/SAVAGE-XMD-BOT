@@ -1,0 +1,39 @@
+{
+  "name": "SAVAGE-XMD",
+  "description": "A powerful WhatsApp bot using session ID authentication and hosted with Render.",
+  "repository": "https://github.com/SAVAGE-TECH2123/SAVAGE-XMD-BOT",
+  "env": {
+    "SESSION_ID": {
+      "description": "Enter the session ID generated from your session scanner",
+      "required": true
+    },
+    "PUBLIC_MODE": {
+      "description": "Should the bot be usable by everyone? yes or no",
+      "value": "yes"
+    },
+    "OWNER_NAME": {
+      "description": "Bot owner's name",
+      "value": "SAVAGE BOY"
+    },
+    "OWNER_NUMBER": {
+      "description": "Bot owner's WhatsApp number (without +)",
+      "value": "255765457691"
+    },
+    "BOT_NAME": {
+      "description": "Display name of your bot",
+      "value": "SAVAGE-XMD"
+    },
+    "PREFIX": {
+      "description": "Command prefix",
+      "value": "$"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "scripts": {
+    "postdeploy": "node index.js"
+  }
+}
