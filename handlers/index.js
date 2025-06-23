@@ -1,19 +1,24 @@
-const { default: makeWASocket, useMultiFileAuthState } = require("@whiskeysockets/baileys");
+const { default: makeWASocket, useSingleFileAuthState } = require("@whiskeysockets/baileys");
 const P = require("pino");
+const fs = require("fs");
+const path = require("path");
 const messageHandler = require("./messageHandler");
 
-async function startBot() {
-  const { state, saveCreds } = await useMultiFileAuthState("auth"); // Loads session from auth folder
+// Load session ID from environment or default
+const SESSION_ID = process.env.SESSION_ID || "bmwxmd";
+const AUTH_FILE = path.join(__dirname, `../session/auth_info_${SESSION_ID}.json`);
+const { state, saveState } = useSingleFileAuthState(AUTH_FILE);
 
+async function startBot() {
   const sock = makeWASocket({
     auth: state,
     logger: P({ level: "silent" }),
-    printQRInTerminal: true, // shows QR or pairing code
-    browser: ["SAVAGE-XMD", "Chrome", "1.0.0"],
+    printQRInTerminal: true, // still shows QR for testing if needed
+    browser: ["SAVAGE-XMD", "Chrome", "1.0.0"]
   });
 
-  // Save session on update
-  sock.ev.on("creds.update", saveCreds);
+  // Save updated session when it changes
+  sock.ev.on("creds.update", saveState);
 
   // Handle incoming messages
   sock.ev.on("messages.upsert", async (m) => {
@@ -24,7 +29,7 @@ async function startBot() {
     }
   });
 
-  console.log("✅ SAVAGE-XMD is up and running!");
+  console.log("✅ SAVAGE-XMD is running with session:", SESSION_ID);
 }
 
 startBot();
