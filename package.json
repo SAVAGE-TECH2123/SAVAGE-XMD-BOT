@@ -12,5 +12,12 @@
   "dependencies": {
     "@whiskeysockets/baileys": "^6.6.0",
     "dotenv": "^16.3.1"
-  }
+  },
+  "keywords": [
+    "whatsapp-bot",
+    "baileys",
+    "savage-xmd"
+  ],
+  "author": "SAVAGE_BOY",
+  "license": "MIT"
 }
