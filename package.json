@@ -1,7 +1,7 @@
 {
   "name": "savage-xmd-bot",
   "version": "1.0.0",
-  "description": "SAVAGE-XMD WhatsApp Bot powered by Baileys",
+  "description": "A multipurpose WhatsApp bot powered by SAVAGE_B.O.Y",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -9,15 +9,20 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "dependencies": {
-    "@whiskeysockets/baileys": "^6.6.0",
-    "dotenv": "^16.3.1"
-  },
   "keywords": [
-    "whatsapp-bot",
+    "whatsapp",
+    "bot",
     "baileys",
+    "savage",
     "savage-xmd"
   ],
-  "author": "SAVAGE_BOY",
-  "license": "MIT"
+  "author": "SAVAGE_B.O.Y",
+  "license": "MIT",
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.5.0",
+    "dotenv": "^16.3.1",
+    "pino": "^8.0.0",
+    "axios": "^1.6.8",
+    "moment-timezone": "^0.5.40"
+  }
 }
